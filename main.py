@@ -1,7 +1,6 @@
 from sap.conexion_sap import connect_to_sap
 from db.conexion_db import crear_conexion
 from sap.scripts_sap import execute_entregas_ewm,execute_entregas_ewm_v2,execute_guias_remision,execute_materialesIH09
-from generar_hash import detectar_cambios_df
 from db.conexion_db import crear_conexion, cerrar_conexion
 from db.querys_db import insert_data_polars, consult_data, insert_data_polars_ids, update_data_polars
 from funciones import detectar_cambios_df
