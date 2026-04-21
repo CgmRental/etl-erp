@@ -273,6 +273,8 @@ def main():
     df_excel_entregas_ewm_cabezera = pl.concat([excel_entregas_ewm_cabezeraC154, excel_entregas_ewm_cabezeraC200, excel_entregas_ewm_cabezeraC040, excel_entregas_ewm_cabezeraC080, excel_entregas_ewm_cabezera_pendienteC154, excel_entregas_ewm_cabezera_pendienteC200, excel_entregas_ewm_cabezera_pendienteC040, excel_entregas_ewm_cabezera_pendienteC080])
     df_excel_entregas_ewm_cabezera = df_excel_entregas_ewm_cabezera.rename(rename_columns_entregas_ewm_cabezera)
 
+    df_excel_entregas_ewm_cabezera = df_excel_entregas_ewm_cabezera.unique(subset=["id_entrega"], keep="last")
+
     df_excel_entregas_ewm_cabezera = df_excel_entregas_ewm_cabezera.with_columns(
         pl.col("created_at_sap")
         .str.strptime(pl.Datetime, format="%Y-%m-%d %H:%M:%S", strict=False),
@@ -452,7 +454,7 @@ def main():
         pl.col("Hora de picking real").str.to_datetime(format="%Y-%m-%d %H:%M:%S", strict=False).dt.time().alias("Hora de picking real")
     ).rename(rename_columns_entregas_ewm_detalle)
 
-
+    df_excel_entregas_ewm_detalle = df_excel_entregas_ewm_detalle.unique(subset=["id_entrega", "posicion"], keep="last")
     df_excel_entregas_ewm_detalle = df_excel_entregas_ewm_detalle.with_columns(
         (
             pl.col("fecha_picking").cast(pl.Datetime) +
