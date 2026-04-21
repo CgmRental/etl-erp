@@ -928,6 +928,12 @@ def execute_entregas_ewm_v2(session,nombre_archivo_cabezera,nombre_archivo_detal
 
         session.findById("wnd[0]/usr/shell/shellcont[0]/shell").selectedNode = "N000000010"
         session.findById("wnd[0]/usr/shell/shellcont[0]/shell").doubleClickNode("N000000010")
+
+        session.findById("wnd[1]/usr/btn%_S_DOCNO_%_APP_%-VALU_PUSH").press()
+        session.findById("wnd[2]/tbar[0]/btn[16]").press()
+        session.findById("wnd[2]/tbar[0]/btn[24]").press()
+        session.findById("wnd[2]/tbar[0]/btn[8]").press()
+        
         session.findById("wnd[1]/usr/chkP_REFDOC").selected = True
         session.findById("wnd[1]/usr/ctxtP_CDATFR").text = fecha
         session.findById("wnd[1]/usr/chkP_REFDOC").setFocus()

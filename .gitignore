@@ -21,3 +21,8 @@ Thumbs.db
 
 # Logs
 *.log
+
+*.xlsx
+
+data/
+config/
