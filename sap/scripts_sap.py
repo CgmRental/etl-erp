@@ -991,4 +991,4 @@ def execute_guias_remision(session,nombre_archivo,formato,ruta,fecha):
         session.EndTransaction()
 
     except Exception as e:
-        print(f'Error al ejecutar ME2N: {e}')
+        print(f'Error al ejecutar ZOSFE004: {e}')

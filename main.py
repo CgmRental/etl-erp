@@ -77,12 +77,11 @@ def main():
         subprocess.run("echo off | clip", shell=True)
 
         execute_guias_remision(session,nombre_archivo_guias_remision,formato,ruta_archivos_base,fecha_sistema)
-        #execute_materialesIH09(session,parametros_materiales,nombre_archivo_IH09,formato,ruta_archivos_base,fecha_sistema)
         
-        if execute_entregas_ewm(session, parametros_entregas_ewm, nombre_archivo_entregas_ewm_cabezera,nombre_archivo_entregas_ewm_detalle, formato, ruta_archivos_base,fecha_sistema):
-            for _,centro in centros.iterrows():
-                cen = centro['centro']
-                execute_entregas_ewm_v2(session,nombre_archivo_entregas_ewm_cabezera,nombre_archivo_entregas_ewm_detalle,formato,ruta_archivos_base,fecha_sistema,cen)
+        execute_entregas_ewm(session, parametros_entregas_ewm, nombre_archivo_entregas_ewm_cabezera,nombre_archivo_entregas_ewm_detalle, formato, ruta_archivos_base,fecha_sistema)
+        for _,centro in centros.iterrows():
+            cen = centro['centro']
+            execute_entregas_ewm_v2(session,nombre_archivo_entregas_ewm_cabezera,nombre_archivo_entregas_ewm_detalle,formato,ruta_archivos_base,fecha_sistema,cen)
         
         connection = crear_conexion("db_almacen_distribucion")
         entrega_pendientedb = consult_data(connection, "SELECT id_entrega,oficina_expedicion FROM tbl_entrega_pendientes_ewm")
